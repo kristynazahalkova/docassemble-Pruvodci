@@ -53,8 +53,8 @@ question: |
 subquestion: |
   Od roku 2022 musí obce přizpůsobit vybírání poplatků za odpad novým pravidlům, která zavedla novela zákona o místních poplatcích v souvislosti s přijetím nového zákona o odpadech. Obce musí přijmout obecně závaznou vyhlášku, ve které pro své území vyberou jeden z těchto poplatků:
 
-  1. Poplatek za obecní systém odpadového hospodářství: Tento poplatek platí ti, kteří jsou v dané obci **hlášeni k trvalému pobytu** a nebo v obci vlastní nemovitost, kde k pobytu nikdo hlášený není. Poplatek se neodvíjí od toho, jestli v obci odpad produkujete či nikoliv a kolik ho do sběrných nádob odkládáte. Pokud máte v obci trvalý pobyt, předpokládá se, že systém využíváte. Zákon počítá s několika důvody pro osvobození od tohoto poplatku. Jedním z nich je, pokud reálně bydlíte v jiné obci, kde, například jako součást služeb v rámci nájemního vztahu, hradíte druhý z poplatků.
-  2. Poplatek za odkládání komunálního odpadu z nemovité věci: Tento poplatek platí ti, kteří mají **v obci bydliště** nebo vlastní nemovitost, kde nikdo bydliště nemá. Bydlištěm je místo, kde se zdržujete s úmyslem žít tam s výhradou změny okolností trvale. Výše tohoto poplatku se odvíjí od množství vyprodukovaného odpadu.
+  1. **Poplatek za obecní systém odpadového hospodářství**: Tento poplatek platí ti, kteří jsou v dané obci hlášeni k **trvalému pobytu** a nebo v obci vlastní nemovitost, kde k pobytu nikdo hlášený není. Poplatek se neodvíjí od toho, jestli v obci odpad produkujete či nikoliv a kolik ho do sběrných nádob odkládáte. Pokud máte v obci trvalý pobyt, předpokládá se, že systém využíváte. Zákon počítá s několika důvody pro osvobození od tohoto poplatku. Jedním z nich je, pokud reálně bydlíte v jiné obci, kde, například jako součást služeb v rámci nájemního vztahu, hradíte druhý z poplatků.
+  2. **Poplatek za odkládání komunálního odpadu z nemovité věci**: Tento poplatek platí ti, kteří mají v obci **bydliště** nebo vlastní nemovitost, kde nikdo bydliště nemá. Bydlištěm je místo, kde se zdržujete s úmyslem žít tam s výhradou změny okolností trvale. Výše tohoto poplatku se odvíjí od množství vyprodukovaného odpadu.
 
   Další informace o poplatcích za odpad se dočtete v [letáku ombudsmana Komunální odpad](https://www.ochrance.cz/uploads-import/Letaky/Komunalni-odpad.pdf).
 continue button field: uvod
@@ -72,7 +72,7 @@ question: |
   V jaké obci **${ Obec.pobyt.popis }**?
   % endif
 subquestion: |
-  *Zkontrolujeme za Vás jestli obec příslušnou vyhlášku zveřejnila ve [Sbírce](https://sbirkapp.gov.cz/)*
+  *Zkontrolujeme za Vás, jestli obec příslušnou vyhlášku zveřejnila ve [Sbírce](https://sbirkapp.gov.cz/).*
 fields:
   - Obec: Obec.pobyt.obec
   - Kraj: Obec.pobyt.kraj
@@ -123,7 +123,7 @@ code: |
 question: |
   Jakou formu poplatku za odpad zvolila obec **${ Obec.bydliste.obec }**?
 subquestion: |
-  Obec ${ Obec.bydliste.obec } zdá se nemá vyhlášku o poplatku za odpad zveřejněnou ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani), jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
+  Zdá se, že obec ${ Obec.bydliste.obec } nemá vyhlášku o poplatku za odpad zveřejněnou ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
 fields:
   no label: Obec.bydliste.rezim
   input type: radio
@@ -145,7 +145,7 @@ script: |
 question: |
   Jakou formu poplatku za odpad zvolila obec **${ Obec.pobyt.obec }**?
 subquestion: |
-  Obec ${ Obec.pobyt.obec } zdá se nemá vyhlášku o poplatku za odpad zveřejněnou ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani), jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
+  Zdá se, že obec ${ Obec.pobyt.obec } nemá vyhlášku o poplatku za odpad zveřejněnou ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
 fields:
   no label: Obec.pobyt.rezim
   input type: radio
