@@ -88,9 +88,8 @@ event: system_znemovitosti
 question: |
   Poplatek musíte platit v obci ${ Obec.bydliste.obec } V obci ${ Obec.pobyt.obec } jste od poplatku osvobozeni. Musíte to ale obci oznámit.
 subquestion: |
-  Poplatek jste povinni platit v obci, kde máte bydliště, a kde odpad produkujete. V obci, kde máte trvalý pobyt, ale nebydlíte tam, jste ze zákona od poplatku osvobozeni. Osvobození musíte obci oznámit ve stanovené lhůtě. Obvykle lhůta končí splatností poplatku. Podrobnosti se dozvíte z
-
-  % if Obec.pobyt.vyhlaska != "Není" or Obec.bydliste.vyhlaska != "Není":
+  Poplatek jste povinni platit v obci, kde máte bydliště a kde odpad produkujete. V obci, kde máte trvalý pobyt, ale nebydlíte tam, jste ze zákona od poplatku osvobozeni. Osvobození musíte obci oznámit ve stanovené lhůtě. Obvykle lhůta končí splatností poplatku. Podrobnosti se dozvíte z vyhlášky obce ${ Obec.pobyt.obec }:
+ % if Obec.pobyt.vyhlaska != "Není" or Obec.bydliste.vyhlaska != "Není":
   ${ vyhlaskaOdkaz.show() }
   % endif
 action buttons:
