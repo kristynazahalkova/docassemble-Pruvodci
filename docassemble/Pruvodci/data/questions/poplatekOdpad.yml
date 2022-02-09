@@ -29,6 +29,8 @@ code: |
       cekacka
   Obec.pobyt.rezim
   if bydliste_pobyt:
+    tlacitka
+    naplnit_tlacitka
     bydliste_pobyt_stejne
   Obec.bydliste.obec
   Obec.bydliste.vyhlasky
@@ -38,11 +40,13 @@ code: |
     else:
       cekacka
   Obec.bydliste.rezim
+  tlacitka
+  naplnit_tlacitka
   vysledek
 ---
 event: vysledek
 code: |
-  value(Obec.bydliste.rezim+"_"+Obec.pobyt.rezim)
+  value(Obec.pobyt.rezim+"_"+Obec.bydliste.rezim)
 ---
 event: analyzaTextu
 code: |
@@ -85,13 +89,22 @@ code: |
 ---
 code: |
   Obec.pobyt.vyhlasky = vyhlaskyObce(Obec.pobyt.info["datovaSchrankaID"])
+  kontrola = 0
   if len(Obec.pobyt.vyhlasky) > 0:
     for vyhlaska in Obec.pobyt.vyhlasky:
       if vyhlaska["Oblast právní úpravy"] == "místní poplatek za komunální odpad - obecní systém":
         Obec.pobyt.rezim = "system"
         Obec.pobyt.vyhlaska = vyhlaska
         ziskanyText = background_action('analyzaTextu', id=Obec.pobyt.vyhlaska["ID záznamu"])
+        kontrola+=1
+      elif vyhlaska["Oblast právní úpravy"] == "místní poplatek za komunální odpad - odkládání komunálního odpadu":
+        Obec.pobyt.rezim = "system"
+        Obec.pobyt.vyhlaska = vyhlaska
+        ziskanyText = background_action('analyzaTextu', id=Obec.pobyt.vyhlaska["ID záznamu"])
+        kontrola+=1
   else:
+    Obec.pobyt.vyhlaska = "Není"
+  if kontrola == 0 or kontrola > 1:
     Obec.pobyt.vyhlaska = "Není"
 ---
 code: |
@@ -111,7 +124,15 @@ code: |
         Obec.bydliste.rezim = "system"
         Obec.bydliste.vyhlaska = vyhlaska
         ziskanyText = background_action('analyzaTextu', id=Obec.bydliste.vyhlaska["ID záznamu"])
+        kontrola+=1
+      elif vyhlaska["Oblast právní úpravy"] == "místní poplatek za komunální odpad - odkládání komunálního odpadu":
+        Obec.bydliste.rezim = "system"
+        Obec.bydliste.vyhlaska = vyhlaska
+        ziskanyText = background_action('analyzaTextu', id=Obec.bydliste.vyhlaska["ID záznamu"])
+        kontrola+=1
   else:
+    Obec.bydliste.vyhlaska = "Není"
+  if kontrola == 0 or kontrola > 1:
     Obec.bydliste.vyhlaska = "Není"
 ---
 code: |

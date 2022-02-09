@@ -1,13 +1,149 @@
 code: |
-  akce = {}
-  akce["podnet"] = [{'action': 'https://frankbold.org/podnet_obec',
-    'label': 'Vygenerovat podnět obci',
-    'color': 'primary',
-    'icon': 'file-alt'}]
-  akce["osvobozeni"] = [{'action': 'https://frankbold.org/podnet_obec',
+  import urllib
+  argsOsvobozeni = {}
+  argsOsvobozeni["obecPobyt"] = Obec.pobyt.obec
+  argsOsvobozeni["iddsPobyt"] = Obec.pobyt.info["datovaSchrankaID"]
+  argsOsvobozeni["obecBydliste"] = Obec.bydliste.obec
+  argsOsvobozeni["bydlisteVyhlaska"] = Obec.bydliste.vyhlaska
+  argsOsvobozeni["pobytVyhlaska"] = Obec.pobyt.vyhlaska
+  argsOsvobozeni = urllib.parse.urlencode(argsOsvobozeni, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:osvobozeniPoplatekOdpad.yml&"+argsOsvobozeni),
     'label': 'Vygenerovat žádost o osvobození od poplatku',
     'color': 'primary',
-    'icon': 'file-alt'}]
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsVyhlaskaObciPobyt = {}
+  argsVyhlaskaObciPobyt["obec"] = Obec.pobyt.obec
+  argsVyhlaskaObciPobyt["idds"] = Obec.pobyt.info["datovaSchrankaID"]
+  argsVyhlaskaObciPobyt["vyhlaska"] = Obec.pobyt.vyhlaska
+  argsVyhlaskaObciPobyt["obcan"] = True
+  argsVyhlaskaObciPobyt["typ"] = "obec"
+  argsVyhlaskaObciPobyt = urllib.parse.urlencode(argsVyhlaskaObciPobyt, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaObciPobyt),
+    'label': 'Vygenerovat podnět obci '+Obec.pobyt.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsVyhlaskaObciBydliste = {}
+  argsVyhlaskaObciBydliste["obec"] = Obec.bydliste.obec
+  argsVyhlaskaObciBydliste["idds"] = Obec.bydliste.info["datovaSchrankaID"]
+  argsVyhlaskaObciBydliste["vyhlaska"] = Obec.bydliste.vyhlaska
+  argsVyhlaskaObciBydliste["obcan"] = False
+  argsVyhlaskaObciBydliste["typ"] = "obec"
+  argsVyhlaskaObciBydliste = urllib.parse.urlencode(argsVyhlaskaObciBydliste, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaObciBydliste),
+    'label': 'Vygenerovat podnět obci '+Obec.bydliste.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsVyhlaskaMvPobyt = {}
+  argsVyhlaskaMvPobyt["obec"] = Obec.pobyt.obec
+  argsVyhlaskaMvPobyt["vyhlaska"] = Obec.pobyt.vyhlaska
+  argsVyhlaskaMvPobyt["typ"] = "mv"
+  argsVyhlaskaMvPobyt = urllib.parse.urlencode(argsVyhlaskaMvPobyt, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaMvPobyt),
+    'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.pobyt.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsVyhlaskaMvBydliste = {}
+  argsVyhlaskaMvBydliste["obec"] = Obec.bydliste.obec
+  argsVyhlaskaMvBydliste["vyhlaska"] = Obec.bydliste.vyhlaska
+  argsVyhlaskaMvBydliste["typ"] = "mv"
+  argsVyhlaskaMvBydliste = urllib.parse.urlencode(argsVyhlaskaMvBydliste, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaMvBydliste),
+    'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.bydliste.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsMvPobyt = {}
+  argsMvPobyt["odpad"] = True
+  argsMvPobyt["obec"] = Obec.pobyt.obec
+  argsMvPobyt = urllib.parse.urlencode(argsMvPobyt, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:kontrolaObce.yml&"+argsMvPobyt),
+    'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.pobyt.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsObciBydliste = {}
+  argsObciBydliste["odpad"] = True
+  argsObciBydliste["obec"] = Obec.bydliste.obec
+  argsObciBydliste = urllib.parse.urlencode(argsObciBydliste, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetObci.yml&"+argsObciBydliste),
+    'label': 'Vygenerovat podnět obci '+Obec.bydliste.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsObciPobyt = {}
+  argsObciPobyt["odpad"] = True
+  argsObciPobyt["obec"] = Obec.pobyt.obec
+  argsObciPobyt["idds"] = Obec.pobyt.info["datovaSchrankaID"]
+  argsObciPobyt = urllib.parse.urlencode(argsObciPobyt, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetObci.yml&"+argsObciPobyt),
+    'label': 'Vygenerovat podnět obci '+Obec.pobyt.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  import urllib
+  argsMvBydliste = {}
+  argsMvBydliste["odpad"] = True
+  argsMvBydliste["obec"] = Obec.bydliste.obec
+  argsMvBydliste["idds"] = Obec.bydliste.info["datovaSchrankaID"]
+  argsMvBydliste = urllib.parse.urlencode(argsMvBydliste, doseq=False)
+  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:kontrolaObce.yml&"+argsMvBydliste),
+    'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.bydliste.obec,
+    'color': 'primary',
+    'icon': 'file-alt'})
+---
+code: |
+  tlacitka = []
+---
+sets: naplnit_tlacitka
+code: |
+  if bydliste_pobyt:
+    if Obec.pobyt.rezim == "jiny":
+      argsVyhlaskaObciPobyt
+      argsVyhlaskaMvPobyt
+
+    if Obec.pobyt.rezim == "nevydana":
+      argsObciPobyt
+      argsMvPobyt
+  else:
+    if Obec.pobyt.rezim == "jiny":
+      argsVyhlaskaObciPobyt
+      argsVyhlaskaMvPobyt
+
+    if Obec.bydliste.rezim == "jiny":
+      argsVyhlaskaObciBydliste
+      argsVyhlaskaMvBydliste
+
+    if Obec.pobyt.rezim == "nevydana":
+      argsObciPobyt
+      argsMvPobyt
+
+    if Obec.bydliste.rezim == "nevydana":
+      argsObciBydliste
+      argsMvBydliste
+
+    if [Obec.pobyt.rezim,Obec.bydliste.rezim] == ["system", "znemovitosti"]:
+      argsOsvobozeni
+
+  naplnit_tlacitka = True
 ---
 ################################# Šablony
 template: vyhlaskaOdkaz
@@ -76,7 +212,7 @@ subquestion: |
   % endif
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: system_system
 question: |
@@ -95,7 +231,7 @@ subquestion: |
   % endif
 action buttons:
   code: |
-    akce["osvobozeni"]
+    tlacitka
 ---
 event: system_nevydana
 question: |
@@ -112,7 +248,7 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: system_jiny
 question: |
@@ -129,7 +265,7 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: nevydana_znemovitosti
 question: |
@@ -146,13 +282,13 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: znemovitosti_jiny
 question: |
-  Poplatek musíte platit v obci ${ Obec.bydliste.obec }. Jiný druh poplatku obec zavést nesmí. Upozorněte ji na to.
+  Poplatek musíte platit v obci ${ Obec.pobyt.obec }. Jiný druh poplatku obec zavést nesmí. Upozorněte ji na to.
 subquestion: |
-  Ze zákona jste povinni poplatek hradit v obci, ve které bydlíte a odpad produkujete, tedy v obci ${ Obec.bydliste.obec }.
+  Ze zákona jste povinni poplatek hradit v obci, ve které bydlíte a odpad produkujete, tedy v obci ${ Obec.pobyt.obec }.
 
   Pokud obec, ve které jste hlášeni k trvalému pobytu, pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
 
@@ -163,7 +299,7 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: znemovitosti_znemovitosti
 question: |
@@ -184,7 +320,7 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: jiny_nevydana
 question: |
@@ -203,7 +339,7 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: nevydana_nevydana
 question: |
@@ -218,7 +354,7 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: nevydana_system
 question: |
@@ -235,7 +371,7 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
 ---
 event: jiny_system
 question: |
@@ -252,4 +388,4 @@ subquestion: |
   ${ dalsiInformace.show() }
 action buttons:
   code: |
-    akce["podnet"]
+    tlacitka
