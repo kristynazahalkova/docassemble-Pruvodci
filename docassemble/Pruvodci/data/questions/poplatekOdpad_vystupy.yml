@@ -286,9 +286,9 @@ event: znemovitosti_system
 question: |
   Poplatek neplatíte ani v jedné obci.
 subquestion: |
-  Obec ${ Obec.pobyt.obec }, kde máte trvalý pobyt, vybíra poplatek za odpad podle bydliště. Tedy od lidí, kteří v obci reálně bydlí.
+  Obec ${ Obec.pobyt.obec }, kde máte trvalý pobyt, zavedla poplatek za odkládání komunálního odpadu z nemovité věci. Vybírá tedy poplatek od lidí, kteří v obci reálně bydlí.
 
-  Zároveň ${ Obec.bydliste.obec }, kde bydlíte, vybírá poplatek od lidí, kteří mají v obci hláše trvalý pobyt.
+  Zároveň obec ${ Obec.bydliste.obec }, kde bydlíte, zavedla poplatek za za systém odpadového hospodářství. Vybírá tedy poplatek od lidí, kteří mají v obci hlášený trvalý pobyt.
 
   ${ vyhlaskaOdkaz }
 
