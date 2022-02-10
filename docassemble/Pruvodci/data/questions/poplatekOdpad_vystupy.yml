@@ -156,11 +156,13 @@ content: |
   Vyhláška obce ${ Obec.pobyt.obec }, která upravuje poplatek za odpad:
 
     *  [${ Obec.pobyt.vyhlaska["Název"] }](https://sbirkapp.gov.cz/detail/${ Obec.pobyt.vyhlaska["ID záznamu"] }/text).
+
   % endif
   % if Obec.bydliste.vyhlaska != "Není":
   Vyhláška obce ${ Obec.bydliste.obec }, která upravuje poplatek za odpad:
 
     *  [${ Obec.bydliste.vyhlaska["Název"] }](https://sbirkapp.gov.cz/detail/${ Obec.bydliste.vyhlaska["ID záznamu"] }/text).
+
   <div class="alert alert-dismissible alert-light">
   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   Pro jistotu doporučujeme vyhlášku překontrolovat.
@@ -328,7 +330,7 @@ action buttons:
 ---
 event: znemovitosti_nevydana
 question: |
-  Poplatek aktuálně neplatíte v žádné obci. Obec ${ Obec.bydliste.jiny }, která vyhlášku pro rok 2022 nevydala, nemůže poplatek vybírat.
+  Poplatek aktuálně neplatíte v žádné obci. Obec ${ Obec.bydliste.obec }, která vyhlášku pro rok 2022 nevydala, nemůže poplatek vybírat.
 subquestion: |
   Obec ${ Obec.pobyt.obec }, ve které máte trvalý pobyt, vybírá poplatek od lidí, kteří v obci skutečně bydlí. Vás se tedy poplatek netýká.
 

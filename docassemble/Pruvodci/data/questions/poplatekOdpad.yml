@@ -97,13 +97,7 @@ code: |
   kontrola = 0
   if len(Obec.pobyt.vyhlasky) > 0:
     for vyhlaska in Obec.pobyt.vyhlasky:
-      if vyhlaska["Oblast právní úpravy"] == "místní poplatek za komunální odpad - obecní systém":
-        Obec.pobyt.rezim = "system"
-        Obec.pobyt.vyhlaska = vyhlaska
-        ziskanyText = background_action('analyzaTextu', id=Obec.pobyt.vyhlaska["ID záznamu"])
-        kontrola+=1
-      elif vyhlaska["Oblast právní úpravy"] == "místní poplatek za komunální odpad - odkládání komunálního odpadu":
-        Obec.pobyt.rezim = "system"
+      if vyhlaska["Oblast právní úpravy"] in ["místní poplatek za komunální odpad - obecní systém","místní poplatek za komunální odpad - odkládání komunálního odpadu"]:
         Obec.pobyt.vyhlaska = vyhlaska
         ziskanyText = background_action('analyzaTextu', id=Obec.pobyt.vyhlaska["ID záznamu"])
         kontrola+=1
@@ -123,15 +117,10 @@ code: |
 ---
 code: |
   Obec.bydliste.vyhlasky = vyhlaskyObce(Obec.bydliste.info["datovaSchrankaID"])
+  kontrola = 0
   if len(Obec.bydliste.vyhlasky) > 0:
     for vyhlaska in Obec.bydliste.vyhlasky:
-      if vyhlaska["Oblast právní úpravy"] == "místní poplatek za komunální odpad - obecní systém":
-        Obec.bydliste.rezim = "system"
-        Obec.bydliste.vyhlaska = vyhlaska
-        ziskanyText = background_action('analyzaTextu', id=Obec.bydliste.vyhlaska["ID záznamu"])
-        kontrola+=1
-      elif vyhlaska["Oblast právní úpravy"] == "místní poplatek za komunální odpad - odkládání komunálního odpadu":
-        Obec.bydliste.rezim = "system"
+      if vyhlaska["Oblast právní úpravy"] in ["místní poplatek za komunální odpad - obecní systém","místní poplatek za komunální odpad - odkládání komunálního odpadu"]:
         Obec.bydliste.vyhlaska = vyhlaska
         ziskanyText = background_action('analyzaTextu', id=Obec.bydliste.vyhlaska["ID záznamu"])
         kontrola+=1
