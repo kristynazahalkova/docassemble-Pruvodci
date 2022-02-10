@@ -26,6 +26,8 @@ code: |
   uvod
   bydliste_pobyt
   Obec.pobyt.obec
+  if pobytDatovkou:
+    pobytDatovkou
   Obec.pobyt.vyhlasky
   if Obec.pobyt.vyhlaska != "Není":
     if ziskanyText.ready():
@@ -39,6 +41,8 @@ code: |
     data_done
     bydliste_pobyt_stejne
   Obec.bydliste.obec
+  if bydlisteDatovkou:
+    bydlisteDatovkou
   Obec.bydliste.vyhlasky
   if Obec.bydliste.vyhlaska != "Není":
     if ziskanyText.ready():
@@ -94,7 +98,25 @@ script: |
   <script src="${ url_of('mapy_api_obec.js')}"></script>
 ---
 code: |
-  Obec.pobyt.info = najitObec(Obec.pobyt.obec, Obec.pobyt.kraj)
+  pobytInfo = najitObec(Obec.pobyt.obec, Obec.pobyt.kraj)
+  if not pobytInfo:
+    pobytDatovkou = True
+  else:
+    Obec.pobyt.info = pobytInfo
+---
+code: |
+  Obec.pobyt.info = {}
+  Obec.pobyt.info["datovaSchrankaID"] = pobytIDDS
+  pobytDatovkou = True
+---
+question: |
+    Bohužel se nám obec nepodařilo najít.
+subquestion: |
+  Vraťte se zpět a zkuste vyhledat obec znovu.
+
+  Případně uveďte identifikátor datové schránky obce, podle které ji poznáme spolehlivě. Identifikátor zpravidla naleznete na webu obce mezi kontakty, ty v [seznamu džitelů](https://www.mojedatovaschranka.cz/sds/search).
+fields:
+  - IDDS: pobytIDDS
 ---
 code: |
   Obec.pobyt.vyhlasky = vyhlaskyObce(Obec.pobyt.info["datovaSchrankaID"])
@@ -117,7 +139,25 @@ code: |
     Obec.pobyt.rezim = pole_pobyt[1]
 ---
 code: |
-  Obec.bydliste.info = najitObec(Obec.bydliste.obec, Obec.bydliste.kraj)
+  bydlisteInfo = najitObec(Obec.bydliste.obec, Obec.bydliste.kraj)
+  if not bydlisteInfo:
+    bydlisteDatovkou = True
+  else:
+    Obec.bydliste.info = bydlisteInfo
+---
+code: |
+  Obec.bydliste.info = {}
+  Obec.bydliste.info["datovaSchrankaID"] = bydlisteIDDS
+  bydlisteDatovkou = True
+---
+question: |
+    Bohužel se nám obec nepodařilo najít.
+subquestion: |
+  Vraťte se zpět a zkuste vyhledat obec znovu.
+
+  Případně uveďte identifikátor datové schránky obce, podle které ji poznáme spolehlivě. Identifikátor zpravidla naleznete na webu obce mezi kontakty, ty v [seznamu džitelů](https://www.mojedatovaschranka.cz/sds/search).
+fields:
+  - IDDS: bydlisteIDDS
 ---
 code: |
   Obec.bydliste.vyhlasky = vyhlaskyObce(Obec.bydliste.info["datovaSchrankaID"])
