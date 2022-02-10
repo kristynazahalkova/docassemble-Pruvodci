@@ -151,6 +151,8 @@ question: |
   Jakou formu poplatku za odpad zvolila obec **${ Obec.bydliste.obec }**?
 subquestion: |
   Zdá se, že obec ${ Obec.bydliste.obec } dosud vyhlášku o poplatku za odpad nezveřejnila ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
+
+  Jaký systém vyhláška nastavuje poznáte z pravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** obecní systému odpadového hospodářství* či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci*.
 fields:
   no label: Obec.bydliste.rezim
   input type: radio
@@ -173,6 +175,8 @@ question: |
   Jakou formu poplatku za odpad zvolila obec **${ Obec.pobyt.obec }**?
 subquestion: |
   Zdá se, že obec ${ Obec.pobyt.obec } dosud vyhlášku o poplatku za odpad nezveřejnila ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
+
+  Jaký systém vyhláška nastavuje poznáte z pravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** obecní systému odpadového hospodářství* či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci*.
 fields:
   no label: Obec.pobyt.rezim
   input type: radio
@@ -186,7 +190,7 @@ event: cekacka
 question: |
   Analyzujeme vyhlášku. Prosíme o strpení…
 subquestion: |
-  Může to trvat i několik minut, ale makáme na tom.
+  Může to trvat i několik minut, ale pracujeme na tom.
 
   [FILE giphy.gif]
 reload: True
