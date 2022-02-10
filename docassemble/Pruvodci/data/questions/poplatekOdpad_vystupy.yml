@@ -189,8 +189,9 @@ question: |
   Obec nenastavila systém pro výběr poplatku, který by byl v souladu se zákonem. Upozorněte jí na to.
   % endif
 subquestion: |
+  % if Obec.pobyt.rezim in ["system","znemovitosti"]:
   Pokud bydlíte v obci, ve které máte trvalý pobyt, budete platit poplatek, který vaše obec zavedla svou obecně závaznou vyhláškou.
-
+  % endif
   % if Obec.pobyt.vyhlaska != "Není":
   Vyhláška obce ${ Obec.pobyt.obec }, která upravuje poplatek za odpad:
 
