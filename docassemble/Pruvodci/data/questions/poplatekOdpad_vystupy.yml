@@ -178,17 +178,17 @@ content: |
 ---
 template: dalsiInformace
 content: |
-  Další informace o tom, jak můžete občan obce prosadit řešení určité záležitosti, se dočtete v našich manuálech [Práva občanů obcí a krajů](https://frankbold.org/poradna/fungovani-obci-a-uradu/zapojeni-verejnosti/zapojeni-verejnosti/rada/prava-obcanu-obci-a-kraju) a [Politické nástroje občana: Jak efektivně upozornit na problém nebo prosadi jeho řešení?](https://frankbold.org/poradna/korupce-a-transparentnost/korupce-a-jednani-uredniku/zakladni-informace/rada/politicke-nastroje-obcana-jak-efektivne-upo)
+  Další informace o tom, jak můžete jako občan obce prosadit řešení určité záležitosti, se dočtete v našich manuálech [Práva občanů obcí a krajů](https://frankbold.org/poradna/fungovani-obci-a-uradu/zapojeni-verejnosti/zapojeni-verejnosti/rada/prava-obcanu-obci-a-kraju) a [Politické nástroje občana: Jak efektivně upozornit na problém nebo prosadi jeho řešení?](https://frankbold.org/poradna/korupce-a-transparentnost/korupce-a-jednani-uredniku/zakladni-informace/rada/politicke-nastroje-obcana-jak-efektivne-upo).
 ---
 ###################################### Výsledné stránky
 event: bydliste_pobyt_stejne
 question: |
   % if Obec.pobyt.rezim == "system":
-  Obec má zaveden poplatek dle trvalého pobytu.
+  Poplatek platíte v obci ${ Obec.pobyt.obec }.
   % elif Obec.pobyt.rezim == "znemovitosti":
   Obec má zaveden poplatek dle bydliště.
   % else:
-  Obec zřejmě nemá nastaven správný systém pro výběr poplatku.
+  Obec nenastavila systém pro výběr poplatku, který by byl v souladu se zákonem. Upozorněte jí na to.
   % endif
 subquestion: |
   Pokud bydlíte v obci, ve které máte trvalý pobyt, budete platit poplatek, který vaše obec zavedla svou obecně závaznou vyhláškou.
@@ -218,13 +218,13 @@ event: system_system
 question: |
   Poplatek musíte platit v obci ${ Obec.pobyt.obec }, kde máte trvalý pobyt.
 subquestion: |
-  Ze zákona jste povinni poplatek hradit pouze v obci, ve které máte hlášený trvalý pobyt. Pokud jsou poplatky za odpad součástí platby za služby, kterou hradíte v rámci nájemního vztahu, hrazení těchto výdajů je na dohodě mezi vámi a vaším pronajímatelem.
+  Ze zákona jste povinni poplatek platit pouze v obci, ve které máte hlášený trvalý pobyt. Pokud jsou poplatky za odpad součástí platby za služby, kterou platíte v rámci nájemního vztahu, placení těchto výdajů je na dohodě mezi vámi a vaším pronajímatelem.
 ---
 event: system_znemovitosti
 question: |
   Poplatek musíte platit v obci ${ Obec.bydliste.obec } V obci ${ Obec.pobyt.obec } jste od poplatku osvobozeni. Musíte to ale obci oznámit.
 subquestion: |
-  Poplatek jste povinni platit v obci, kde máte bydliště, a kde odpad produkujete. V obci, kde máte trvalý pobyt, ale nebydlíte tam, jste ze zákona od poplatku osvobozeni. Osvobození musíte obci oznámit ve stanovené lhůtě. Obvykle lhůta končí splatností poplatku. Podrobnosti se dozvíte z
+  Poplatek jste povinni platit v obci, kde máte bydliště, a kde odpad produkujete. V obci, kde máte trvalý pobyt, ale nebydlíte tam, jste ze zákona od poplatku osvobozeni. Osvobození musíte obci oznámit ve stanovené lhůtě. Obvykle lhůta končí splatností poplatku. Podrobnosti se dozvíte z obecně závazné vyhlášky ${ Obec.pobyt.obec }:
 
   % if Obec.pobyt.vyhlaska != "Není" or Obec.bydliste.vyhlaska != "Není":
   ${ vyhlaskaOdkaz.show() }
@@ -286,11 +286,11 @@ action buttons:
 ---
 event: znemovitosti_jiny
 question: |
-  Poplatek musíte platit v obci ${ Obec.pobyt.obec }. Jiný druh poplatku obec zavést nesmí. Upozorněte ji na to.
+  Poplatek musíte platit v obci ${ Obec.pobyt.obec }. Jiný druh poplatku obec ${ Obec.bydliste.obec }. zavést nesmí. Upozorněte ji na to.
 subquestion: |
-  Ze zákona jste povinni poplatek hradit v obci, ve které bydlíte a odpad produkujete, tedy v obci ${ Obec.pobyt.obec }.
+  Ze zákona jste povinni poplatek platit v obci, ve které bydlíte a odpad produkujete, tedy v obci ${ Obec.pobyt.obec }.
 
-  Pokud obec, ve které jste hlášeni k trvalému pobytu, pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
+  Pokud obec, ve které jste hlášeni k trvalému pobytu (obec ${ Obec.pobyt.obec }), pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
 
   ${ upozorneteObec.show(obcan=False) }
 
@@ -305,7 +305,7 @@ event: znemovitosti_znemovitosti
 question: |
   Poplatek musíte platit v obci ${ Obec.bydliste.obec }.
 subquestion: |
-  Poplatek jste povinni platit pouze v obci, kde bydlíte, tedy  ${ Obec.bydliste.obec }. Jeho výše se odvíjí od množství odpadu, který vyprodukujete. Podrobnosti se dozvíte z obecně závazné vyhlášky dané obce.
+  Poplatek jste povinni platit pouze v obci, kde bydlíte, tedy  ${ Obec.bydliste.obec }. Jeho výše se odvíjí od množství odpadu, který vyprodukujete. Podrobnosti se dozvíte z obecně závazné vyhlášky dané obce:
 ---
 event: jiny_jiny
 question: |
@@ -326,13 +326,13 @@ event: jiny_nevydana
 question: |
   Obecně závazná vyhláška obce ${ Obec.pobyt.obec } je nezákonná. Obec, která žádnou obecně závaznou vyhlášku nevydala, nemá pro vybírání poplatku právní základ.
 subquestion: |
-  Pokud obec, ve které bydlíte, pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
+  Pokud obec, ve které bydlíte (obec ${ Obec.bydliste.obec }), pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
 
   ${ upozorneteObec.show(obcan=False) }
 
   ${ mv.show(zrusit=True) }
 
-  Pokud obec, ve které máte bydliště, pro rok 2022 dosud nevydala vyhlášku o poplatku za komunální odpad a poplatek přesto požaduje, také porušuje zákon.
+  Pokud obec, ve které bydlíte (obec ${ Obec.bydliste.obec }), pro rok 2022 dosud nevydala vyhlášku o poplatku za komunální odpad a poplatek přesto požaduje, také porušuje zákon.
 
   Doporučujeme obec na její nezákonný postup upozornit výše uvedeným způsobem. I v tomto případě se po neúspěšném informování obce můžete s podnětem obrátit na Ministerstvo vnitra.
 
@@ -362,7 +362,7 @@ question: |
 subquestion: |
   Obec ${ Obec.bydliste.obec } zavedla pro rok 2022 poplatek za obecní systém odpadového hospodářství. Poplatníkem totoho poplatku nejste, jelikož v obci nejste hlášeni k trvalému pobytu.
 
-  Pokud obec, ve které jste hlášeni k trvalému pobytu, pro rok 2022 dosud nevydala vyhlášku o poplatku za komunální odpad a poplatek přesto požaduje, porušuje zákon.
+  Pokud obec, ve které jste hlášeni k trvalému pobytu (obec ${ Obec.pobyt.obec }), pro rok 2022 dosud nevydala vyhlášku o poplatku za komunální odpad a poplatek přesto požaduje, porušuje zákon.
 
   ${ upozorneteObec.show(obcan=False) }
 
@@ -379,7 +379,7 @@ question: |
 subquestion: |
   Obec ${ Obec.bydliste.obec } zavedla pro rok 2022 poplatek za obecní systém odpadového hospodářství. Poplatníkem totoho poplatku nejste, jelikož v obci nejste hlášeni k trvalému pobytu.
 
-  Pokud obec, ve které jste hlášeni ktrvalému pobytu pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
+  Pokud obec, ve které jste hlášeni kvtrvalému pobytu (${ Obec.pobyt.obec }) pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
 
   ${ upozorneteObec.show(obcan=False) }
 
