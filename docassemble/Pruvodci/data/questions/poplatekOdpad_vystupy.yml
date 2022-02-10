@@ -8,7 +8,7 @@ code: |
   argsOsvobozeni["pobytVyhlaska"] = Obec.pobyt.vyhlaska
   argsOsvobozeni = urllib.parse.urlencode(argsOsvobozeni, doseq=False)
   tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:osvobozeniPoplatekOdpad.yml&"+argsOsvobozeni),
-    'label': 'Vygenerovat žádost o osvobození od poplatku',
+    'label': 'Vygenerovat oznámení o osvobození od poplatku',
     'color': 'primary',
     'icon': 'file-alt'})
 ---
@@ -152,16 +152,20 @@ code: |
 ################################# Šablony
 template: vyhlaskaOdkaz
 content: |
-    % if Obec.pobyt.vyhlaska != "Není":
-    Vyhláška obce ${ Obec.pobyt.obec }, která upravuje poplatek za odpad:
+  % if Obec.pobyt.vyhlaska != "Není":
+  Vyhláška obce ${ Obec.pobyt.obec }, která upravuje poplatek za odpad:
 
-      *  [${ Obec.pobyt.vyhlaska["Název"] }](https://sbirkapp.gov.cz/detail/${ Obec.pobyt.vyhlaska["ID záznamu"] }/text).
-    % endif
-    % if Obec.bydliste.vyhlaska != "Není":
-    Vyhláška obce ${ Obec.bydliste.obec }, která upravuje poplatek za odpad:
+    *  [${ Obec.pobyt.vyhlaska["Název"] }](https://sbirkapp.gov.cz/detail/${ Obec.pobyt.vyhlaska["ID záznamu"] }/text).
+  % endif
+  % if Obec.bydliste.vyhlaska != "Není":
+  Vyhláška obce ${ Obec.bydliste.obec }, která upravuje poplatek za odpad:
 
-      *  [${ Obec.bydliste.vyhlaska["Název"] }](https://sbirkapp.gov.cz/detail/${ Obec.bydliste.vyhlaska["ID záznamu"] }/text).
-    % endif
+    *  [${ Obec.bydliste.vyhlaska["Název"] }](https://sbirkapp.gov.cz/detail/${ Obec.bydliste.vyhlaska["ID záznamu"] }/text).
+  <div class="alert alert-dismissible alert-light">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  Pro jistotu doporučujeme vyhlášku překontrolovat.
+  </div>
+  % endif
 ---
 template: upozorneteObec
 content: |
@@ -233,7 +237,7 @@ event: system_znemovitosti
 question: |
   Poplatek musíte platit v obci ${ Obec.bydliste.obec } V obci ${ Obec.pobyt.obec } jste od poplatku osvobozeni. Musíte to ale obci oznámit.
 subquestion: |
-  Poplatek jste povinni platit v obci, kde máte bydliště, a kde odpad produkujete. V obci, kde máte trvalý pobyt, ale nebydlíte tam, jste ze zákona od poplatku osvobozeni. Osvobození musíte obci oznámit ve stanovené lhůtě. Obvykle lhůta končí splatností poplatku. Podrobnosti se dozvíte z obecně závazné vyhlášky ${ Obec.pobyt.obec }:
+  Poplatek jste povinni platit v obci, kde máte bydliště a kde odpad produkujete. V obci, kde máte trvalý pobyt, ale nebydlíte tam, jste ze zákona od poplatku osvobozeni. Osvobození musíte obci oznámit ve stanovené lhůtě. Obvykle lhůta končí splatností poplatku. Podrobnosti se dozvíte z obecně závazné vyhlášky ${ Obec.pobyt.obec }:
 
   ${ vyhlaskaOdkaz }
 action buttons:
@@ -364,7 +368,7 @@ action buttons:
 ---
 event: jiny_znemovitosti
 question: |
-  Poplatek musíte platit v obci ${ Obec.bydliste.obec }, ve které bydlíte. Obec ${ Obec.pobyl.obec } nemůže vybírat jiný druh poplatku.
+  Poplatek musíte platit v obci ${ Obec.bydliste.obec }, ve které bydlíte. Obec ${ Obec.pobyt.obec } nemůže vybírat jiný druh poplatku.
 subquestion: |
   Obec ${ Obec.bydliste.obec } zavedla pro rok 2022 poplatek za obecní systém odpadového hospodářství. Jelikož v obci bydlíte, vztahuje se tento poplatek na vás. Podrobnosti najdete právě v dané vyhlášce.
 

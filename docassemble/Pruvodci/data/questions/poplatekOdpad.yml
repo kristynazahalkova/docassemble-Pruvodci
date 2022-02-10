@@ -2,7 +2,6 @@ metadata:
   title: Průvodce místním poplatkem za odpad
   short title: Poplatek za odpad
   description: Průvodce místním poplatkem za odpad
-  temporary session: True
 ---
 features:
   javascript:
@@ -152,7 +151,7 @@ question: |
 subquestion: |
   Zdá se, že obec ${ Obec.bydliste.obec } dosud vyhlášku o poplatku za odpad nezveřejnila ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
 
-  Jaký systém vyhláška nastavuje poznáte z pravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** obecní systému odpadového hospodářství* či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci*.
+  To, jaký systém vyhláška nastavuje, poznáte zpravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** za obecní systém odpadového hospodářství*** či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci***.
 fields:
   no label: Obec.bydliste.rezim
   input type: radio
@@ -176,7 +175,7 @@ question: |
 subquestion: |
   Zdá se, že obec ${ Obec.pobyt.obec } dosud vyhlášku o poplatku za odpad nezveřejnila ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
 
-  Jaký systém vyhláška nastavuje poznáte z pravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** obecní systému odpadového hospodářství* či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci*.
+  To, jaký systém vyhláška nastavuje, poznáte zpravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** za obecní systém odpadového hospodářství*** či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci***.
 fields:
   no label: Obec.pobyt.rezim
   input type: radio
