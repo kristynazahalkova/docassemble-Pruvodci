@@ -114,7 +114,7 @@ code: |
   tlacitka = []
   tlacitka.append({'action': url_of('exit'),
     'label': 'Zavřít průvodce',
-    'color': 'secondary')
+    'color': 'secondary'})
 ---
 sets: naplnit_tlacitka
 code: |
