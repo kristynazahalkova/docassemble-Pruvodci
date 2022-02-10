@@ -36,6 +36,7 @@ code: |
   if bydliste_pobyt:
     tlacitka
     naplnit_tlacitka
+    data_done
     bydliste_pobyt_stejne
   Obec.bydliste.obec
   Obec.bydliste.vyhlasky
@@ -47,6 +48,7 @@ code: |
   Obec.bydliste.rezim
   tlacitka
   naplnit_tlacitka
+  data_done
   vysledek
 ---
 event: vysledek
@@ -140,7 +142,7 @@ question: |
 subquestion: |
   Zdá se, že obec ${ Obec.bydliste.obec } dosud vyhlášku o poplatku za odpad nezveřejnila ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
 
-  To, jaký systém vyhláška nastavuje, poznáte zpravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** za obecní systém odpadového hospodářství*** či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci***.
+  To, jaký systém vyhláška nastavuje, poznáte zpravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku*** *za obecní systém odpadového hospodářství* či o ***místním poplatku*** *za odkládání komunálního odpadu z nemovité věci*.
 fields:
   no label: Obec.bydliste.rezim
   input type: radio
@@ -164,7 +166,7 @@ question: |
 subquestion: |
   Zdá se, že obec ${ Obec.pobyt.obec } dosud vyhlášku o poplatku za odpad nezveřejnila ve [Sbírce](https://sbirkapp.gov.cz/vyhledavani). Jinak bychom ji našli automaticky. Zkuste ji ještě dohledat na webu obce.
 
-  To, jaký systém vyhláška nastavuje, poznáte zpravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku** za obecní systém odpadového hospodářství*** či o ***místním poplatku** za odkládání komunálního odpadu z nemovité věci***.
+  To, jaký systém vyhláška nastavuje, poznáte zpravidla už z názvu. Buď je uvedena jako vyhláška o ***místním poplatku*** *za obecní systém odpadového hospodářství* či o ***místním poplatku*** *za odkládání komunálního odpadu z nemovité věci*.
 fields:
   no label: Obec.pobyt.rezim
   input type: radio
@@ -182,3 +184,7 @@ subquestion: |
 
   [FILE giphy.gif]
 reload: True
+---
+code: |
+  webhook_data = requests.post('https://hook.integromat.com/g6r7zzuwhe6dyjo986t7px8bbyebbg4r', data=json.dumps(all_variables()),headers={'Content-Type': 'application/json'})
+  data_done = True
