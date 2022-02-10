@@ -186,5 +186,7 @@ event: cekacka
 question: |
   Analyzujeme vyhlášku. Prosíme o strpení…
 subquestion: |
-  [FILE cat.gif]
+  Může to trvat i několik minut, ale makáme na tom.
+
+  [FILE giphy.gif]
 reload: True

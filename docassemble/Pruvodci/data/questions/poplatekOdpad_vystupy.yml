@@ -7,7 +7,7 @@ code: |
   argsOsvobozeni["bydlisteVyhlaska"] = Obec.bydliste.vyhlaska
   argsOsvobozeni["pobytVyhlaska"] = Obec.pobyt.vyhlaska
   argsOsvobozeni = urllib.parse.urlencode(argsOsvobozeni, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:osvobozeniPoplatekOdpad.yml&"+argsOsvobozeni),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:osvobozeniPoplatekOdpad.yml&"+argsOsvobozeni),
     'label': 'Vygenerovat žádost o osvobození od poplatku',
     'color': 'primary',
     'icon': 'file-alt'})
@@ -21,7 +21,7 @@ code: |
   argsVyhlaskaObciPobyt["obcan"] = True
   argsVyhlaskaObciPobyt["typ"] = "obec"
   argsVyhlaskaObciPobyt = urllib.parse.urlencode(argsVyhlaskaObciPobyt, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaObciPobyt),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:podnetVyhlaska.yml&"+argsVyhlaskaObciPobyt),
     'label': 'Vygenerovat podnět obci '+Obec.pobyt.obec,
     'color': 'primary',
     'icon': 'file-alt'})
@@ -35,7 +35,7 @@ code: |
   argsVyhlaskaObciBydliste["obcan"] = False
   argsVyhlaskaObciBydliste["typ"] = "obec"
   argsVyhlaskaObciBydliste = urllib.parse.urlencode(argsVyhlaskaObciBydliste, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaObciBydliste),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:podnetVyhlaska.yml&"+argsVyhlaskaObciBydliste),
     'label': 'Vygenerovat podnět obci '+Obec.bydliste.obec,
     'color': 'primary',
     'icon': 'file-alt'})
@@ -47,7 +47,7 @@ code: |
   argsVyhlaskaMvPobyt["vyhlaska"] = Obec.pobyt.vyhlaska
   argsVyhlaskaMvPobyt["typ"] = "mv"
   argsVyhlaskaMvPobyt = urllib.parse.urlencode(argsVyhlaskaMvPobyt, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaMvPobyt),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:podnetVyhlaska.yml&"+argsVyhlaskaMvPobyt),
     'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.pobyt.obec,
     'color': 'primary',
     'icon': 'file-alt'})
@@ -59,7 +59,7 @@ code: |
   argsVyhlaskaMvBydliste["vyhlaska"] = Obec.bydliste.vyhlaska
   argsVyhlaskaMvBydliste["typ"] = "mv"
   argsVyhlaskaMvBydliste = urllib.parse.urlencode(argsVyhlaskaMvBydliste, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetVyhlaska.yml&"+argsVyhlaskaMvBydliste),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:podnetVyhlaska.yml&"+argsVyhlaskaMvBydliste),
     'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.bydliste.obec,
     'color': 'primary',
     'icon': 'file-alt'})
@@ -70,7 +70,7 @@ code: |
   argsMvPobyt["odpad"] = True
   argsMvPobyt["obec"] = Obec.pobyt.obec
   argsMvPobyt = urllib.parse.urlencode(argsMvPobyt, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:kontrolaObce.yml&"+argsMvPobyt),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:kontrolaObce.yml&"+argsMvPobyt),
     'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.pobyt.obec,
     'color': 'primary',
     'icon': 'file-alt'})
@@ -81,7 +81,7 @@ code: |
   argsObciBydliste["odpad"] = True
   argsObciBydliste["obec"] = Obec.bydliste.obec
   argsObciBydliste = urllib.parse.urlencode(argsObciBydliste, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetObci.yml&"+argsObciBydliste),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:podnetObci.yml&"+argsObciBydliste),
     'label': 'Vygenerovat podnět obci '+Obec.bydliste.obec,
     'color': 'primary',
     'icon': 'file-alt'})
@@ -93,7 +93,7 @@ code: |
   argsObciPobyt["obec"] = Obec.pobyt.obec
   argsObciPobyt["idds"] = Obec.pobyt.info["datovaSchrankaID"]
   argsObciPobyt = urllib.parse.urlencode(argsObciPobyt, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:podnetObci.yml&"+argsObciPobyt),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:podnetObci.yml&"+argsObciPobyt),
     'label': 'Vygenerovat podnět obci '+Obec.pobyt.obec,
     'color': 'primary',
     'icon': 'file-alt'})
@@ -105,13 +105,16 @@ code: |
   argsMvBydliste["obec"] = Obec.bydliste.obec
   argsMvBydliste["idds"] = Obec.bydliste.info["datovaSchrankaID"]
   argsMvBydliste = urllib.parse.urlencode(argsMvBydliste, doseq=False)
-  tlacitka.append({'action': url_of("https://da-test.frankbold.org/interview?i=docassemble.playground1vzory:kontrolaObce.yml&"+argsMvBydliste),
+  tlacitka.append({'action': url_of(url_of('root')+"interview?i=docassemble.VzoryPravnichPodani:kontrolaObce.yml&"+argsMvBydliste),
     'label': 'Vygenerovat podnět Ministerstvu vnitra ohledně obce '+Obec.bydliste.obec,
     'color': 'primary',
     'icon': 'file-alt'})
 ---
 code: |
   tlacitka = []
+  tlacitka.append({'action': url_of('exit'),
+    'label': 'Zavřít průvodce',
+    'color': 'secondary')
 ---
 sets: naplnit_tlacitka
 code: |
@@ -429,7 +432,7 @@ question: |
 subquestion: |
   Pokud obec ${ Obec.pobyt.obec } pro rok 2022 dosud nevydala vyhlášku o poplatku za komunální odpad, porušila zákon.
 
-  Pokud obec ${ Obec.bydliste.obe }, ve které bydlíte, pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
+  Pokud obec ${ Obec.bydliste.obec }, ve které bydlíte, pro rok 2022 rozhodla o jiném druhu poplatku za komunální odpad (př. místní poplatek za provoz systému shromažďování, sběru, přepravy, třídění, využívání a odstraňování komunálních odpadů), porušila zákon. Zákon o místních poplatcích totiž umožňuje výběr pouze ze dvou poplatků, které jsme popsali v úvodu.
 
   ${ upozorneteObec.show(obcan=False) }
 
