@@ -183,10 +183,8 @@ content: |
 ###################################### Výsledné stránky
 event: bydliste_pobyt_stejne
 question: |
-  % if Obec.pobyt.rezim == "system":
+  % if Obec.pobyt.rezim in ["system","znemovitosti"]:
   Poplatek platíte v obci ${ Obec.pobyt.obec }.
-  % elif Obec.pobyt.rezim == "znemovitosti":
-  Poplatek platíte v obci ${ Obec.pobyt.obec }
   % else:
   Obec nenastavila systém pro výběr poplatku, který by byl v souladu se zákonem. Upozorněte jí na to.
   % endif
